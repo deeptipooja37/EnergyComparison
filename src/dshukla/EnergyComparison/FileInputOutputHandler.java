@@ -16,9 +16,11 @@ public class FileInputOutputHandler {
 	/**
 	 *  checks the input parameters for empty/null values
 	 * */
-	public void isEmpty(String[] args) throws ParamNotFoundException {
-		if (args ==null || args.length==0 || args[0]==null || args[0]=="") 
-			throw new ParamNotFoundException();
+	public boolean isEmpty(String[] args) throws ParamNotFoundException {
+		if (args ==null || args.length==0 || args[0]==null || args[0]==""){
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -35,19 +37,24 @@ public class FileInputOutputHandler {
 	 * */
 	public Object readJSONFile (String[] args) {
 		JSONParser jsonParser = new JSONParser();
-        
+		String filePath = null;
 			/*
 			 * 		Throws Custom Exception ParamNotFoundException
 			 * */
 			try {
-				isEmpty(args);
+				if(isEmpty(args)){
+					filePath ="./resource/plans.json";
+					System.out.println("Invalid input file picking up default file from ./resource/plans.json");
+				}else{
+			        filePath = args[0];
+				}
 			} catch (ParamNotFoundException e1) {
 				e1.printStackTrace();
 			}
 			
 	        try 
 	        {
-	        	Path p = Paths.get(args[0]);
+	        	Path p = Paths.get(filePath);
 	        	byte[] bytes = Files.readAllBytes(p);
 				String content = new String(bytes);
 	            Object  obj = jsonParser.parse(content);
