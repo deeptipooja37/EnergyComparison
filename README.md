@@ -7,6 +7,9 @@ Download the src and pom.xml, and run following command at that folder. Program 
 To compile and build the project : mvn install 
 
 
+To run application with default plan.json using jar file: java -jar target\EnergyComparison-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+
 To run the application with default plan.json file run the command : mvn exec:java -D"exec.mainClass"="dshukla.EnergyComparison.Solution" 
 
 
