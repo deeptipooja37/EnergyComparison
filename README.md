@@ -1,5 +1,9 @@
 "# EnergyComparison" 
 
+Download the src and pom.xml, and run following command at that folder. Program reads input line line by line, so input commands should be seperated by \n next line character.
+
+
+
 To compile and build the project : mvn install 
 
 
